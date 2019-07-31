@@ -1,2 +1,3 @@
 # LeetCoode
-算法题练习
+疯狂的学习算法，疯狂的刷LeetCode
+
