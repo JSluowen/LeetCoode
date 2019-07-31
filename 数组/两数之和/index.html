@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //暴力破解
+        // var twoSum = function (nums, target) {
+        //     for (var i = 0; i < nums.length-1; i++) {
+        //         for (var j = i+1; j < nums.length; j++) {
+        //           if(nums[j]+nums[i]==target){
+        //               return [i,j];
+        //           }
+        //         }
+        //     }
+        //     throw new IllegalArgumentException("No two sum solution");
+        // };
+
+
+        // 用数组优化
+        var twoSum = function (nums, target) {
+            var result = [];
+            for (var i = 0; i < nums.length; i++) {
+                var template = target - nums[i];
+                if (result.indexOf(template) !== -1) {
+                    return [result.indexOf(template), i];
+                }
+                result.push(nums[i]);
+            }
+        }
+
+        var nums = [0, 4, 3, 0],
+            target = 0;
+        console.log(twoSum(nums, target));
+    </script>
+</body>
+
+</html>

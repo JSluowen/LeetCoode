@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 设计一个支持 push，pop，top 操作，并能在常数时间内检索到最小元素的栈。
+
+    push(x) -- 将元素 x 推入栈中。
+    pop() -- 删除栈顶的元素。
+    top() -- 获取栈顶元素。
+    getMin() -- 检索栈中的最小元素。
+    示例:
+
+    MinStack minStack = new MinStack();
+    minStack.push(-2);
+    minStack.push(0);
+    minStack.push(-3);
+    minStack.getMin(); 返回 -3.
+    minStack.pop();
+    minStack.top();  返回 0.
+    minStack.getMin();  返回 -2. -->
+
+    <script>
+        var MinStack = function () {
+            this.minStack = [];
+        };
+
+        /** 
+         * @param {number} x
+         * @return {void}
+         */
+        MinStack.prototype.push = function (x) {
+            this.minStack.push(x);
+        };
+
+        /**
+         * @return {void}
+         */
+        MinStack.prototype.pop = function () {
+            this.minStack.pop();
+        };
+
+        /**
+         * @return {number}
+         */
+        MinStack.prototype.top = function () {
+            let num = this.minStack[this.minStack.length-1];
+            return num;
+        };
+
+        /**
+         * @return {number}
+         */
+        MinStack.prototype.getMin = function () {
+            let min = this.minStack[0];
+            for (let i = 1; i < this.minStack.length; i++) {
+                if (min > this.minStack[i]) {
+                    min = this.minStack[i]
+                }
+            }
+            return min;
+        };
+        let minStack = new MinStack();
+        minStack.push();
+    </script>
+</body>
+
+</html>

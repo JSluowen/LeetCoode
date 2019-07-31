@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 自解
+        // var lengthOfLongestSubstring = function (s) {
+        //     var result = [];
+        //     var len;
+        //     if (s.length == 0) {
+        //         len = 0
+        //     } else {
+        //         len = 1;
+        //     }
+        //     var array = s.split('');
+        //     for (var i = 0; i < array.length - 1; i++) {
+        //         for (var j = i; j < array.length; j++) {
+        //             if (result.indexOf(array[j]) == -1) {
+        //                 result.push(array[j]);
+        //                 if (len < result.length) {
+        //                     len = result.length;
+        //                 }
+        //             } else {
+        //                 result = [];
+        //                 break;
+        //             }
+
+        //         }
+
+        //     }
+        //     return len;
+        // };
+
+        // 滑动窗口
+        var lengthOfLongestSubstring = function (s) {
+            var n = s.length;
+            var ans = 0,
+                i = 0,
+                j = 0;
+            var result = [];
+            while (i < n && j < n) {
+                if (result.indexOf(s.charAt(j)) == -1) {
+                    result.push(s.charAt(j++));
+                    ans = Math.max(ans, j - i);
+                } else {
+                    result.shift(charAt(i++));
+                }
+            }
+            return ans;
+        }
+
+        var s = "au";
+        console.log(lengthOfLongestSubstring(s));
+    </script>
+</body>
+
+</html>

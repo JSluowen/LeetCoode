@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let arr = [9,9,9];
+        // let plusOne = function (digits) {
+        //     let length = digits.length - 1
+        //     let num = digits[length] + 1;
+        //     let flag = true;
+        //     while (flag) {
+        //         if (num > 9) {
+        //             if (length == 0 && num > 9) {
+        //                 digits[length] = 0;
+        //                 digits.unshift(1);
+        //                 flag = false;
+        //             } else {
+        //                 digits[length] = 0;
+        //                 length--;
+        //                 num = digits[length] + 1;
+        //                 flag = true;
+        //             }
+        //         } else {
+        //             digits[length] = num;
+        //             flag = false;
+        //         }
+        //     }
+        //     return digits;
+        // };
+        
+        // 解法 2 
+        let plusOne = function (digits){
+            for(let i = digits.length-1;i>=0;i--){
+                digits[i]++;
+                digits[i] = digits[i]%10;
+                if(digits[i]!==0)return digits;
+            }
+            let arr =Array.from({length:digits.length+1},(v,k)=>0);
+            arr[0] = 1;
+            return arr;
+        }
+        
+        console.log(plusOne(arr))
+    </script>
+</body>
+
+</html>
