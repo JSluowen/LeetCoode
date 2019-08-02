@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        给定一个排序链表，删除所有重复的元素，使得每个元素只出现一次。
+        示例 1:
+        输入: 1->1->2
+        输出: 1->2 -->
+    <script>
+        let ListNode = {
+            val: 1,
+            next: {
+                val: 1,
+                next: {
+                    val: 1,
+                    next: {
+                        val: 2,
+                        next: null
+                    }
+                }
+            }
+        }
+
+        var deleteDuplicates = function (head) {
+            let node = head;
+            while (node !== null && node.next !== null) {
+                if (node.next.val == node.val) {
+                    node.next = node.next.next;
+                } else {
+                    node = node.next;
+                }
+            }
+            return head;
+        };
+        console.log(deleteDuplicates(ListNode));
+    </script>
+</body>
+
+</html>
