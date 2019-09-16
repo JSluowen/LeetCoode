@@ -1,3 +1,3 @@
 # LeetCoode
-疯狂的学习算法，疯狂的刷LeetCode
+学习算法,日常刷刷LeetCode
 
