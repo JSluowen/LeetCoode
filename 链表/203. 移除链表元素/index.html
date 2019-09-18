@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    const head = {
+      val: 1,
+      next: {
+        val: 2,
+        next: {
+          val: 6,
+          next: {
+            val: 5,
+            next: {
+              val: 6,
+              next: null
+            }
+          }
+        }
+      }
+    }
+    从头节点开始判断来解决
+    var removeElements = function (head, val) {
+      while (head !== null && head.val == val) {
+        head = head.next;
+      }
+      if (head == null || head.next == null) {
+        return head
+      }
+      var pre = head;
+      while (pre.next) {
+        if (pre.next.val == val) {
+          pre.next = pre.next.next;
+        } else {
+          pre = pre.next;
+        }
+      }
+      return head
+    };
+    console.log(removeElements(head, 6))
+    // 递归的方式解决
+    // var removeElements2 = function(head,val){
+    //   if(head == null){
+    //     return null
+    //   }
+    //   head.next = removeElements2(head.next,val);
+    //   if(head.val = val){
+    //     return head.next 
+    //   }else{
+    //     return head
+    //   }
+    // }
+    
+    // console.log(removeElements2(head, 6))
+  </script>
+</body>
+
+</html>
