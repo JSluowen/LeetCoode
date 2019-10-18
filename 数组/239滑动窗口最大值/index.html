@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /**
+ * @param {number[]} nums
+ * @param {number} k
+ * @return {number[]}
+ */
+    var maxSlidingWindow = function (nums, k) {
+      if (nums.length === 0) return []
+      let maxIndex = -1;
+      let arr = []
+      for (let i = 0; i <= nums.length - k; i++) {
+        if (maxIndex >= i && maxIndex < i + k) {
+          arr[i] = nums[maxIndex]
+        } else {
+          maxIndex = i;
+          for (let j = i; j < k + i; j++) {
+            if (nums[maxIndex] <= nums[j]) {
+              maxIndex = j
+            }
+          }
+          arr[i] = nums[maxIndex]
+        }
+        if (nums[maxIndex] <= nums[k + i]) {
+          maxIndex = k + i
+        }
+      }
+      return arr
+    }
+  </script>
+</body>
+
+</html>
