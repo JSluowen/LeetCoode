@@ -2,38 +2,60 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
 
 <body>
-    <script>
-        var isValid = function (s) {
-            var Json = {
-                ')': '(',
-                ']': '[',
-                '}': '{'
-            }
-            debugger;
-            var stack = [];
-            for (var i = 0; i < s.length; i++) {
-                var c = s.charAt(i);
-                if (c in Json) {
-                    var template = stack.length != 0 ? stack.pop() : '#';
-                    if (template !== Json[c]) {
-                        return false;
-                    }
+  <script>
+    // var isValid = function (s) {
+    //     var Json = {
+    //         ')': '(',
+    //         ']': '[',
+    //         '}': '{'
+    //     }
+    //     var stack = [];
+    //     for (var i = 0; i < s.length; i++) {
+    //         var c = s.charAt(i);
+    //         if (c in Json) {
+    //             var template = stack.length != 0 ? stack.pop() : '#';
+    //             if (template !== Json[c]) {
+    //                 return false;
+    //             }
 
-                } else {
-                    stack.push(c);
-                }
-            }
-            return stack.length == 0;
-        };
-        var s = "[()]";
-        console.log(isValid(s));
-    </script>
+    //         } else {
+    //             stack.push(c);
+    //         }
+    //     }
+    //     return stack.length == 0;
+    // };
+    var isValid = function (s) {
+      let stack = []
+      let ar = s.split('')
+      let model={
+        ']':'[',
+        '}':'{',
+        ')':'(',
+      }
+      while (ar.length != 0) {
+        debugger
+        let a = ar.pop()
+        if (stack.length == 0) {
+          stack.push(a)
+        } else {
+          if (model[stack[stack.length - 1]] == a) {
+            stack.pop()
+          } else {
+            stack.push(a)
+          }
+        }
+      }
+      return stack.length == 0
+    };
+    var s = "[()]";
+    console.log(isValid(s));
+  </script>
 </body>
 
 </html>

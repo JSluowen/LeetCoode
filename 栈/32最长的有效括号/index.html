@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 1.暴力破解发(超时)
+    // function isVolid(str) {
+    //   let stack = [];
+    //   // debugger
+    //   for (let i = 0; i < str.length; i++) {
+    //     if (str.charAt(i) === '(') {
+    //       stack.push(str.charAt(i));
+    //     } else if (stack.length !== 0 && stack[stack.length - 1] === '(') {
+    //       stack.pop()
+    //     } else {
+    //       return false
+    //     }
+    //   }
+    // return stack.length === 0
+    // }
+    // function longestValidParentheses(s) {
+    //   let maxLen = 0;
+    //   for (let i = 0; i < s.length; i++) {
+    //     for (let j = i + 2; j <= s.length; j += 2) {
+    //       if (isVolid(s.substring(i, j))) {
+    //         maxLen = Math.max(maxLen, j - i);
+    //       }
+    //     }
+    //   }
+    //   return maxLen
+    // }
+    
+    // 采用栈的方式
+    function longestValidParentheses(s){
+      let stack = [];
+      stack.push(-1);
+      let maxLen=0;
+      debugger
+      for(let i=0;i<s.length;i++){
+        if(s.charAt(i)==='('){
+          stack.push(i);
+        }else{
+          stack.pop();
+          if(stack.length===0){
+            stack.push(i)
+          }else{
+            maxLen = Math.max(maxLen,i-stack[stack.length-1])
+          }
+        }
+      }
+      return maxLen
+    }
+    var s = ')()()'
+    console.log(longestValidParentheses(s))
+  </script>
+</body>
+
+</html>

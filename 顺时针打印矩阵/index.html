@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    function printMatrix(arr){
+      let width = arr[0].length;
+      let height = arr.length;
+      let res = [];
+      if(!arr||width===0||height===0)return null
+      if(width==1){
+        for(let i=0;i<width;i++){
+          res.push(arr[0][i])
+        }
+        return res;
+      }
+      if(height==1){
+        for(let j=0;j<height;j++){
+          res.push(arr[j][0]);
+        }
+        return res;
+      }
+      for(let i=0;i<width-i;i++){
+        let j = i;
+        if(j<width-i){
+          for(;j<width-i;j++){
+            res.push(arr[i][j])
+          }
+          for(let h = i+1;h<height-i;h++){
+            res.push(arr[h][width-i-1])
+          }
+          let f = height-1-i;
+          if(f!=i){
+            for(let b=width-1-i-1;b>=i;b--){
+              res.push(arr[f][b])
+            }
+            for(let l = f-1;l>i;l--){
+              res.push(arr[l][i])
+            }
+          }
+        }
+      }
+      return res
+    }
+    let arr = [[1,2,3,4],[5,6,7,8],[9,10,11,12],[13,14,15,16]]
+    console.log(printMatrix(arr))
+  </script>
+</body>
+
+</html>

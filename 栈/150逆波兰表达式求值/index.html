@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    var evalRPN = function (tokens) {
+      if (tokens.length === 0) return null
+      let stack = []
+      let json = ['+', '-', '*', '/'];
+      let sum = 0;
+      if (tokens.length === 1) sum = tokens.pop()
+      while (tokens.length !== 0) {
+        let a = tokens.shift();
+        if (stack.length === 0) {
+          stack.push(a)
+        } else {
+          if (json.indexOf(a) === -1) {
+            stack.push(a)
+          } else {
+            let num1 = stack.pop() * 1;
+            let num2 = stack.pop() * 1
+            switch (a) {
+              case '+':
+                sum = num1 + num2
+                break;
+              case '-':
+                sum = num2 - num1
+                break;
+              case '*':
+                sum = num1 * num2
+                break;
+              case '/':
+                sum = parseInt(num2 / num1)
+                break;
+            }
+            stack.push(sum)
+          }
+        }
+      }
+      return sum
+    };
+  </script>
+</body>
+
+</html>
