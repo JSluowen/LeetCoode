@@ -1,12 +1,4 @@
-# 刷一刷LeetCoode
-
-## 算法和数据结构学习路线
-
-![suanfa](http://img.pzhuweb.cn/suanfa.jpg)
-
-
-
-##算法学习中的知识点总结
+# 算法题
 
 ###  1.有序度和逆序度概念分析
 
